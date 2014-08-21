@@ -1,0 +1,53 @@
+{
+  "name": "<%= appNameSlug %>",
+  "description": "<%= appDescription %>",
+  "version": "<%= appVersion %>",
+  "homepage": "https://github.com/<%= userName %>/<%= appNameSlug %>",
+  "author": {
+    "name": "<%= authorName %>",
+    "email": "<%= authorEmail %>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/<%= userName %>/<%= appNameSlug %>.git"
+  },
+  "bugs": {
+    "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/issues"
+  },
+  "licenses": [
+    {
+      "type": "<%= license %>",
+      "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/blob/master/LICENSE"
+    }
+  ],
+  "main": "./lib/<%= appNameSlug %>.js",<% if (enableBin) { %>
+  "bin": {
+      "<%= appNameSlug %>": "bin/<%= appNameSlug %>.js"
+  },<% } %>
+  "engines": {
+      "node": ">= 0.10.26",
+      "npm": ">=1.4.3"
+  },
+  "scripts": {
+    "test": "./node_modules/gulp/bin/gulp.js test"
+  },<% if (isPrivate) { %>
+  "private": true,<% } %>
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",<% if (pkgType === 'node') { %>
+    "gulp-mocha": "^1.0.0",<% } %><% if (pkgType === 'browser' || pkgType === 'both') { %>
+    "bower": "^1.3.9",
+    "browserify": "^5.10.1",
+    "vinyl-source-stream": "^0.1.1",
+    "gulp-wrap-umd": "^0.2.1",
+    "gulp-mocha-phantomjs": "^0.5.0",
+    "phantomjs": "^1.9.7-15",<% } %>
+    "gulp": "^3.8.7",
+    "gulp-clean": "^0.3.1",
+    "gulp-jshint": "^1.8.4",
+    "gulp-instrument": "^0.1.0",
+    "vinyl-source-stream": "^0.1.1",
+    "jshint-stylish": "^0.4.0"
+  },
+  "keywords": []
+}

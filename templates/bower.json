@@ -1,0 +1,20 @@
+{
+  "name": "<%= appNameSlug %>",
+  "version": "<%= appVersion %>",
+  "description": "<%= appDescription %>",
+  "homepage": "https://github.com/<%= userName %>/<%= appNameSlug %>",
+  "authors": [
+    "<%= authorName %> <<%= authorEmail %>>"
+  ],
+  "keywords": [],
+  "main": "./lib/<%= appNameSlug %>.js",
+  "dependencies": {},
+  "ignore": [
+    "coverage.html",
+    "node_modules",
+    "lib-cov",
+    "test"
+  ],<% if (isPrivate) { %>
+  "private": true,<% } %>
+  "license": "<%= license %>"
+}

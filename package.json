@@ -1,0 +1,37 @@
+{
+  "name": "slush-js-skeleton",
+  "version": "0.1.0",
+  "description": "Generate node and/or browser skeleton. Readme.md + package.json + bower.json + gulpfile.js + mocha test harness (with browser support) + jshint + jscoverage.",
+  "main": "slushfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexmingoia/slush-js-skeleton"
+  },
+  "keywords": [
+    "slush",
+    "slushgenerator",
+    "node",
+    "npm",
+    "module",
+    "bower",
+    "mocha"
+  ],
+  "author": "Alex Mingoia",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/alexmingoia/slush-js-skeleton/issues"
+  },
+  "homepage": "https://github.com/alexmingoia/slush-js-skeleton",
+  "dependencies": {
+    "gulp": "^3.8.7",
+    "gulp-conflict": "^0.2.0",
+    "gulp-install": "^0.2.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-template": "^1.0.0",
+    "inquirer": "^0.6.0",
+    "underscore.string": "^2.3.3"
+  }
+}
