@@ -4,7 +4,7 @@
   "description": "Generate node and/or browser skeleton. Readme.md + package.json + bower.json + gulpfile.js + mocha test harness (with browser support) + jshint + jscoverage.",
   "main": "slushfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha test --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,9 @@
     "gulp-template": "^1.0.0",
     "inquirer": "^0.6.0",
     "underscore.string": "^2.3.3"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4"
   }
 }
