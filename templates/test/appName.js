@@ -8,7 +8,7 @@
 
 'use strict';
 
-var expect = ((typeof chai === 'object') ? chai : require('chai')).expect;
+var expect = require('chai').expect;
 var lib = process.env.JSCOV ? require('../lib-cov/<%= appNameSlug %>') : require('../lib/<%= appNameSlug %>');
 
 describe('<%= appNameSlug %> module', function() {

@@ -5,4 +5,4 @@ node_modules
 coverage.html
 npm-debug.log
 lib-cov
-dist
+dist/tests.js

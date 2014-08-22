@@ -10,7 +10,6 @@
 
 var gulp = require('gulp');<% if (pkgType === 'node') { %>
 var mocha = require('gulp-mocha');<% } else { %>
-var wrapUMD = require('gulp-wrap-umd');
 var Browserify = require('browserify');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');<% } %>
 var instrument = require('gulp-instrument');
@@ -37,10 +36,13 @@ gulp.task('test', function () {
     }));
 });<% } else { %>
 gulp.task('wrap-umd', function() {
-  return gulp.src('lib/<%= appNameSlug %>.js')
-    .pipe(wrapUMD({
-      namespace: "<%= appNameSlug %>"
-    }))
+  var bundler = new Browserify({
+    standalone: '<%= appNameSlug %>'
+  });
+  bundler.add('./lib/<%= appNameSlug %>.js');
+  bundler.ignore('../lib-cov/<%= appNameSlug %>');
+  return bundler.bundle()
+    .pipe(source('<%= appNameSlug %>.js'))
     .pipe(gulp.dest('dist'));
 });
 

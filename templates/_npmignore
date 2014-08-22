@@ -3,3 +3,4 @@ docs
 test
 .idea
 lib-cov
+dist/tests.js
