@@ -14,6 +14,13 @@ Install using [bower](http://bower.io/):
 
 ```sh
 bower install <%= appNameSlug %>
+```
+
+Using browser script tag and global (UMD wrapper):
+
+```html
+// Available via window.<%= appNameSlug %>
+<script src="dist/<%= appNameSlug %>.js"></script>
 ```<% } %>
 
 ## Contributing
