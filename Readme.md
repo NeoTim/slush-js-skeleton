@@ -16,6 +16,28 @@ cd myproject
 slush js-skeleton
 ```
 
+## Gulp tasks
+
+### test
+
+Run tests.
+
+### coverage
+
+Output test coverage to `coverage.html`.
+
+### wrap-umd
+
+Wrap module in UMD for distribution and save in `dist`.
+
+### jshint
+
+Run jshint.
+
+### watch
+
+Watch for file changes and run tests and jshint.
+
 ## Contributing
 
 Please submit all issues and pull requests to the [alexmingoia/slush-js-skeleton](http://github.com/alexmingoia/slush-js-skeleton) repository!
