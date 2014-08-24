@@ -86,6 +86,7 @@ gulp.task('default', function(done) {
 
     if (answers.pkgType === 'node') {
       files.push('!' + __dirname + '/templates/bower.json');
+      files.push('!' + __dirname + '/templates/appName.html');
     }
 
     if (!answers.enableBin) {
