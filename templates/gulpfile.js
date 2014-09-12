@@ -39,8 +39,10 @@ gulp.task('wrap-umd', function() {
   var bundler = new Browserify({
     standalone: '<%= appNameSlug %>'
   });
+
   bundler.add('./lib/<%= appNameSlug %>.js');
   bundler.ignore('../lib-cov/<%= appNameSlug %>');
+
   return bundler.bundle()
     .pipe(source('<%= appNameSlug %>.js'))
     .pipe(gulp.dest('dist'));
@@ -48,24 +50,29 @@ gulp.task('wrap-umd', function() {
 
 gulp.task('browserify-tests', function() {
   var bundler = new Browserify();
+
   bundler.add('./test/<%= appNameSlug %>.js');
   bundler.ignore('../lib-cov/<%= appNameSlug %>');
+
   return bundler.bundle()
     .pipe(source('tests.js'))
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('test', ['browserify-tests'], function () {
+gulp.task('mocha-phantomjs', ['browserify-tests'], function() {
   return gulp.src('test/<%= appNameSlug %>.html')
     .pipe(mochaPhantomJS({
       mocha: {
-        globals: ['chai'],
         timeout: 6000,
         ignoreLeaks: false,
         ui: 'bdd',
         reporter: 'spec'
       }
     }));
+});
+
+gulp.task('test', ['mocha-phantomjs'], function () {
+  return gulp.src('dist/tests.js').pipe(clean());
 });<% } %>
 
 gulp.task('instrument', function() {
@@ -84,12 +91,12 @@ gulp.task('coverage', ['instrument'], function() {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch(['lib/**/*.js', 'test/**/*.js'], ['jshint']);
+gulp.task('watch', ['jshint', 'test'], function () {
+  gulp.watch(['lib/**/*.js', 'test/**/*.js'], ['jshint', 'test']);
 });
 
 gulp.task('clean', function() {
   return gulp.src(['lib-cov', 'coverage.html', 'npm-debug.log']).pipe(clean());
 });
 
-gulp.task('default', ['jshint', 'test', 'watch']);
+gulp.task('default', ['watch']);
