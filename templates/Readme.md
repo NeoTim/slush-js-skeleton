@@ -1,4 +1,4 @@
-# <%= appName %> [![Build Status](https://secure.travis-ci.org/<%= userName %>/<%= appNameSlug %>.png?branch=master)](http://travis-ci.org/<%= userName %>/<%= appNameSlug %>) [![NPM version](https://badge-me.herokuapp.com/api/npm/<%= appNameSlug %>.png)](http://badges.enytc.com/for/npm/<%= appNameSlug %>) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/<%= userName %>/<%= appNameSlug %>/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# <%= appName %> [![Build Status](http://img.shields.io/travis/<%= userName %>/<%= appNameSlug %>.svg?style=flat)](http://travis-ci.org/<%= userName %>/<%= appNameSlug %>) [![NPM version](http://img.shields.io/npm/v/<%= appNameSlug %>.svg?style=flat)](https://www.npmjs.org/package/<%= appNameSlug %>) [![Dependency Status](http://img.shields.io/david/<%= userName %>/<%= appNameSlug %>.svg?style=flat)](https://david-dm.org/<%= userName %>/<%= appNameSlug %>)
 
 > <%= appDescription %>
 
