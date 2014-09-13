@@ -11,6 +11,7 @@
 var gulp = require('gulp'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
+    path = require('path'),
     template = require('gulp-template'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
@@ -25,7 +26,8 @@ gulp.task('default', function(done) {
     default: 'node'
   }, {
     name: 'appName',
-    message: "What's the module name?"
+    message: "What's the module name?",
+    default: _.slugify(path.basename(process.cwd()))
   }, {
     name: 'appDescription',
     message: "What's the description?"
