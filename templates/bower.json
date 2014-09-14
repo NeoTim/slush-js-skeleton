@@ -7,7 +7,7 @@
     "<%= authorName %> <<%= authorEmail %>>"
   ],
   "keywords": [],
-  "main": "./lib/<%= appNameSlug %>.js",
+  "main": "./dist/<%= appNameSlug %>.js",
   "dependencies": {},
   "ignore": [
     "coverage.html",
