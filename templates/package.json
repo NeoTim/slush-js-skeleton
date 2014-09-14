@@ -21,6 +21,9 @@
     }
   ],
   "main": "./lib/<%= appNameSlug %>.js",<% if (enableBin) { %>
+  "files": [
+    "lib"
+  ],
   "bin": {
       "<%= appNameSlug %>": "bin/<%= appNameSlug %>.js"
   },<% } %>
