@@ -28,7 +28,6 @@ gulp.task('jshint', function () {
 gulp.task('test', function () {
   return gulp.src('test/**/*.js')
     .pipe(mocha({
-      globals: ['chai'],
       timeout: 6000,
       ignoreLeaks: false,
       ui: 'bdd',
@@ -41,7 +40,7 @@ gulp.task('wrap-umd', function() {
   });
 
   bundler.add('./lib/<%= appNameSlug %>.js');
-  bundler.ignore('../lib-cov/<%= appNameSlug %>');
+  bundler.exclude('../lib-cov/<%= appNameSlug %>');
 
   return bundler.bundle()
     .pipe(source('<%= appNameSlug %>.js'))
@@ -52,7 +51,7 @@ gulp.task('browserify-tests', function() {
   var bundler = new Browserify();
 
   bundler.add('./test/<%= appNameSlug %>.js');
-  bundler.ignore('../lib-cov/<%= appNameSlug %>');
+  bundler.exclude('../lib-cov/<%= appNameSlug %>');
 
   return bundler.bundle()
     .pipe(source('tests.js'))
