@@ -20,7 +20,7 @@
     "mocha"
   ],
   "author": "Alex Mingoia",
-  "license": "BSD",
+  "license": "OWL",
   "bugs": {
     "url": "https://github.com/alexmingoia/slush-js-skeleton/issues"
   },
