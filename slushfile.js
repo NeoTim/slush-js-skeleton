@@ -48,8 +48,8 @@ gulp.task('default', function(done) {
     type: 'list',
     name: 'license',
     message: 'Choose your license type',
-    choices: ['BSD', 'MIT', 'Private'],
-    default: 'BSD'
+    choices: ['Open Works License (OWL)'],
+    default: 'Open Works License (OWL)'
   }, {
     type: 'confirm',
     name: 'enableBin',
@@ -75,17 +75,6 @@ gulp.task('default', function(done) {
 
     var files = [__dirname + '/templates/**'];
 
-    if (answers.license === 'MIT') {
-      files.push('!' + __dirname + '/templates/LICENSE_BSD');
-      files.push('!' + __dirname + '/templates/LICENSE_Private');
-    } else if (answers.license === 'BSD') {
-      files.push('!' + __dirname + '/templates/LICENSE_MIT');
-      files.push('!' + __dirname + '/templates/LICENSE_Private');
-    } else {
-      files.push('!' + __dirname + '/templates/LICENSE_BSD');
-      files.push('!' + __dirname + '/templates/LICENSE_MIT');
-    }
-
     if (answers.pkgType === 'node') {
       files.push('!' + __dirname + '/templates/bower.json');
       files.push('!' + __dirname + '/templates/appName.html');
@@ -101,13 +90,6 @@ gulp.task('default', function(done) {
       .pipe(rename(function(file) {
         var appReplace = file.basename.replace(new RegExp('appName', 'g'), answers.appNameSlug);
         file.basename = appReplace;
-        if (answers.license === 'MIT') {
-          file.basename = file.basename.replace('LICENSE_MIT', 'LICENSE');
-        } else if (answers.license === 'BSD') {
-          file.basename = file.basename.replace('LICENSE_BSD', 'LICENSE');
-        } else {
-          file.basename = file.basename.replace('LICENSE_Private', 'LICENSE');
-        }
         if (file.basename[0] === '_') {
           file.basename = '.' + file.basename.slice(1);
         }
