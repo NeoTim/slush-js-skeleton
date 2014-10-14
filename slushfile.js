@@ -52,6 +52,11 @@ gulp.task('default', function(done) {
     default: 'Open Works License (OWL)'
   }, {
     type: 'confirm',
+    name: 'coveralls',
+    message: 'Would you like to report code coverage to coveralls?',
+    default: false
+  }, {
+    type: 'confirm',
     name: 'enableBin',
     message: 'Would you like to enable bin option?',
     default: false

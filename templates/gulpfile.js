@@ -9,7 +9,9 @@ var gulp = require('gulp');<% if (pkgType === 'node') { %>
 var mocha = require('gulp-mocha');<% } else { %>
 var Browserify = require('browserify');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');<% } %>
-var instrument = require('gulp-instrument');
+var instrument = require('gulp-instrument');<% if (coveralls) { %>
+var buffer = require('vinyl-buffer');
+var coveralls = require('gulp-coveralls');<% } %>
 var source = require('vinyl-source-stream');
 var spawn = require('child_process').spawn;
 var clean = require('gulp-clean');
@@ -86,6 +88,45 @@ gulp.task('coverage', ['instrument'], function() {
     .pipe(source('coverage.html'))
     .pipe(gulp.dest('./'));
 });
+<% if (coveralls) { %>
+gulp.task('coveralls', ['instrument'], function(done) {
+  if (!process.env.COVERALLS_REPO_TOKEN) {
+    return done(new Error("No COVERALLS_REPO_TOKEN set."));
+  }
+
+  process.env.JSCOV=1;
+
+  var err = '';
+
+  <% if (pkgType === 'node') { %>
+  var mocha = spawn('node_modules/gulp-mocha/node_modules/mocha/bin/mocha', [
+    'test', '--reporter', 'mocha-lcov-reporter'
+  ]);<% } else { %>
+  var mocha = spawn('node_modules/gulp-mocha-phantomjs/node_modules/mocha-phantomjs/node_modules/mocha/bin/mocha', [
+    'test', '--reporter', 'mocha-lcov-reporter'
+  ]);<% } %>
+
+  mocha.stderr.on('data', function(chunk) {
+    err += chunk;
+  });
+
+  mocha.stdout
+    .pipe(source('lcov.json'))
+    .pipe(buffer())
+    .pipe(coveralls());
+
+  mocha.on('close', function(code) {
+    if (code) {
+      if (err) return done(new Error(err));
+
+      return done(new Error(
+        "Failed to send lcov data to coveralls."
+      ));
+    }
+
+    done();
+  });
+});<% } %>
 
 gulp.task('watch', ['jshint', 'test'], function () {
   gulp.watch(['lib/**/*.js', 'test/**/*.js'], ['jshint', 'test']);

@@ -1,4 +1,4 @@
-# <%= appName %> [![Build Status](http://img.shields.io/travis/<%= userName %>/<%= appNameSlug %>.svg?style=flat)](http://travis-ci.org/<%= userName %>/<%= appNameSlug %>) [![NPM version](http://img.shields.io/npm/v/<%= appNameSlug %>.svg?style=flat)](https://www.npmjs.org/package/<%= appNameSlug %>) [![Dependency Status](http://img.shields.io/david/<%= userName %>/<%= appNameSlug %>.svg?style=flat)](https://david-dm.org/<%= userName %>/<%= appNameSlug %>)
+# <%= appName %> [![Build Status](http://img.shields.io/travis/<%= userName %>/<%= appNameSlug %>.svg?style=flat)](http://travis-ci.org/<%= userName %>/<%= appNameSlug %>)<% if (coveralls) { %> [![Code Coverage](http://img.shields.io/coveralls/<%= userName %>/<%= appNameSlug %>.svg?style=flat)](https://coveralls.io/r/<%= userName %>/<%= appNameSlug %>)<% } %> [![NPM version](http://img.shields.io/npm/v/<%= appNameSlug %>.svg?style=flat)](https://www.npmjs.org/package/<%= appNameSlug %>) [![Dependency Status](http://img.shields.io/david/<%= userName %>/<%= appNameSlug %>.svg?style=flat)](https://david-dm.org/<%= userName %>/<%= appNameSlug %>)
 
 > <%= appDescription %>
 
