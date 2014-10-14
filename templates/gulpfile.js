@@ -11,7 +11,9 @@ var Browserify = require('browserify');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');<% } %>
 var instrument = require('gulp-instrument');<% if (coveralls) { %>
 var buffer = require('vinyl-buffer');
-var coveralls = require('gulp-coveralls');<% } %>
+var coveralls = require('gulp-coveralls');<% } %><% if (enableDocs) { %>
+var jsdoc2md = require('jsdoc-to-markdown');
+var fs = require('fs');<% } %>
 var source = require('vinyl-source-stream');
 var spawn = require('child_process').spawn;
 var clean = require('gulp-clean');
@@ -78,7 +80,7 @@ gulp.task('instrument', function() {
     .pipe(instrument())
     .pipe(gulp.dest('lib-cov'));
 });
-<% if (includeDocs) { %>
+<% if (enableDocs) { %>
 gulp.task('docs', function(done) {
   jsdoc2md.render('./lib/*.js', {
     template: './lib/readme.hbs'
