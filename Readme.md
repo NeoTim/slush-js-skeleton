@@ -16,11 +16,15 @@ cd myproject
 slush js-skeleton
 ```
 
-## Gulp tasks
+## Gulp tasks made available
 
 ### test
 
 Run tests.
+
+### docs
+
+Generate jsdoc-to-markdown and include in readme.
 
 ### coverage
 

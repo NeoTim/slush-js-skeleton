@@ -52,6 +52,11 @@ gulp.task('default', function(done) {
     default: 'Open Works License (OWL)'
   }, {
     type: 'confirm',
+    name: 'enableDocs',
+    message: 'Would you like to include a task to generate docs and include them in the readme?',
+    default: true
+  }, {
+    type: 'confirm',
     name: 'coveralls',
     message: 'Would you like to report code coverage to coveralls?',
     default: false
@@ -88,6 +93,10 @@ gulp.task('default', function(done) {
     if (!answers.enableBin) {
       files.push('!' + __dirname + '/templates/bin/**/**');
       files.push('!' + __dirname + '/templates/bin');
+    }
+
+    if (!answers.enableDocs) {
+      files.push('!' + __dirname + '/templates/lib/readme.hbs');
     }
 
     gulp.src(files)

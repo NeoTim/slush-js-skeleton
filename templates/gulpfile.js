@@ -78,6 +78,15 @@ gulp.task('instrument', function() {
     .pipe(instrument())
     .pipe(gulp.dest('lib-cov'));
 });
+<% if (includeDocs) { %>
+gulp.task('docs', function(done) {
+  jsdoc2md.render('./lib/*.js', {
+    template: './lib/readme.hbs'
+  })
+  .on('error', done)
+  .on('end', done)
+  .pipe(fs.createWriteStream('README.md'))
+});<% } %>
 
 gulp.task('coverage', ['instrument'], function() {
   process.env.JSCOV = true;<% if (pkgType === 'node') { %>

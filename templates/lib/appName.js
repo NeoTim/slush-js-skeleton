@@ -5,4 +5,8 @@
 
 'use strict';
 
+/**
+ * @module <%= appNameSlug %>
+ */
+
 module.exports = {};
