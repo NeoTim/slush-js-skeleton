@@ -1,6 +1,6 @@
 {
   "name": "slush-js-skeleton",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "Generate node and/or browser skeleton. Readme.md + package.json + bower.json + gulpfile.js + mocha test harness (with browser support) + jshint + jscoverage.",
   "main": "slushfile.js",
   "scripts": {
